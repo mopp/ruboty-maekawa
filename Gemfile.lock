@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:mopp/calil.git
+  remote: git://github.com/mopp/calil.git
   revision: fef7da7fc9ed9a646e84d82233a200ce3e2738d2
   branch: add_libkey
   specs:
