@@ -1,0 +1,51 @@
+GIT
+  remote: git@github.com:mopp/calil.git
+  revision: fef7da7fc9ed9a646e84d82233a200ce3e2738d2
+  branch: add_libkey
+  specs:
+    calil (0.0.2)
+
+PATH
+  remote: .
+  specs:
+    ruboty-maekawa (0.1.1)
+      calil
+      ruboty
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activesupport (4.2.3)
+      i18n (~> 0.7)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
+    dotenv (2.0.2)
+    i18n (0.7.0)
+    json (1.8.3)
+    mem (0.1.5)
+    minitest (5.7.0)
+    rake (10.4.2)
+    ruboty (1.2.2)
+      activesupport
+      bundler
+      dotenv
+      mem
+      slop
+    slop (4.2.0)
+    thread_safe (0.3.5)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.10)
+  calil!
+  rake (~> 10.0)
+  ruboty-maekawa!
+
+BUNDLED WITH
+   1.10.5
