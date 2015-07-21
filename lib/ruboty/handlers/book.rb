@@ -13,21 +13,18 @@ module Ruboty
             )
 
             def book(message)
-                puts(message)
+                message.reply(message.body)
                 begin
                     query = message.body.sub("#{message.robot.name} book ", '').strip
+                    message.reply(query)
 
-                    if query.length == 0
-                        raise
-                    end
+                    raise if query.empty?
 
                     hash = {}
                     query.split(".").each { |tag|
                         tag.strip!
                         kv = tag.split(":")
-                        if kv.length <= 1
-                            raise
-                        end
+                        raise if kv.length <= 1
 
                         key = kv[0]
                         values = kv[1]
@@ -36,10 +33,9 @@ module Ruboty
                             hash[key] << v
                         }
                     }
+                    message.reply(hash.inspect)
 
-                    if hash.key?('title') == false
-                        raise "no_title"
-                    end
+                    raise "no_title" if hash.key?('title') == false
                 rescue Exception => e
                     if e.to_s == "no_title"
                         message.reply("タイトルぐらい入力してほしいにゃ")
