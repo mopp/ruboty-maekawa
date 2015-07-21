@@ -6,7 +6,7 @@ Add this line to your application's Gemfile:
 
 ```ruby
 gem 'ruboty-maekawa', 
-    :git => "git@github.com:mopp/ruboty-maekawa.git",
+    :git => "git@github.com:mopp/ruboty-maekawa.git"
 ```
 
 And then execute:
