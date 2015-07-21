@@ -60,7 +60,7 @@ module Ruboty
             FIND_ENABLE_LIMIT = 100
             RETRY_LIMIT       = 10
             RETRY_WAIT_TIME   = 5
-            API_URL           = 'http://iss.ndl.go.jp/api/sru?operation=searchRetrieve&recordSchema=dcndl_simple&query='
+            API_URL           = 'http://iss.ndl.go.jp/api/sru?operation=searchRetrieve&recordSchema=dcndl_simple&maximumRecords=10&query='
 
             def self.request(connector_type, params = {})
                 connector_str = (connector_type == CONNECTOR_AND) ? (" AND ") : (" OR ")

@@ -7,7 +7,6 @@ module Ruboty
 
             on(
                 /book/,
-                all: false,
                 name: "book",
                 description: "Maekawa Librarian\n\texample: @maekawa book title:機械学習. creator:松尾."
             )
@@ -15,7 +14,7 @@ module Ruboty
             def book(message)
                 message.reply(message.body)
                 begin
-                    query = message.body.sub("#{message.robot.name} book ", '').strip
+                    query = message.body.sub("@*#{message.robot.name} book ", '').strip
                     message.reply(query)
 
                     raise if query.empty?
