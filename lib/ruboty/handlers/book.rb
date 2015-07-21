@@ -8,7 +8,7 @@ module Ruboty
             on(
                 /book/,
                 name: "book",
-                description: "Maekawa Librarian\n\texample: @maekawa book title:人工知能. creator:松尾. from:2013."
+                description: "Maekawa Librarian\n\texample: @maekawa book title:人工, 知能. creator:松尾. from:2013."
             )
 
             def book(message)
@@ -43,12 +43,12 @@ module Ruboty
                     return
                 end
 
-                if (2 <= hash['title'].length)
-                    connector_type = Ruboty::Maekawa::Searcher::CONNECTOR_OR
-                    hash = { title: hash['title'] }
-                else
+                # if (2 <= hash['title'].length)
+                #     connector_type = Ruboty::Maekawa::Searcher::CONNECTOR_OR
+                #     hash = { title: hash['title'] }
+                # else
                     connector_type = Ruboty::Maekawa::Searcher::CONNECTOR_AND
-                end
+                # end
 
                 hash['mediatype'] = 1
                 message.reply("このクエリで調べるにゃ\n#{hash.inspect}")
@@ -56,7 +56,7 @@ module Ruboty
                 books = Ruboty::Maekawa::Searcher.request(connector_type, hash)
 
                 books.delete_if do |book|
-                    book.isbn.empty?
+                    book.nil? || book.isbn.empty?
                 end
                 books.uniq! do |book|
                     book.isbn
