@@ -8,14 +8,14 @@ module Ruboty
             on(
                 /book/,
                 name: "book",
-                description: "Maekawa Librarian\n\texample: @maekawa book title:機械学習. creator:松尾."
+                description: "Maekawa Librarian\n\texample: @maekawa book title:人工知能. creator:松尾. from:2013."
             )
 
             def book(message)
-                message.reply(message.body)
+                return if !message.body.match(/^@*#{message.robot.name} book.*/)
+
                 begin
-                    query = message.body.sub("@*#{message.robot.name} book ", '').strip
-                    message.reply(query)
+                    query = message.body.sub(/^@*#{message.robot.name} book /, '').strip
 
                     raise if query.empty?
 
@@ -32,7 +32,6 @@ module Ruboty
                             hash[key] << v
                         }
                     }
-                    message.reply(hash.inspect)
 
                     raise "no_title" if hash.key?('title') == false
                 rescue Exception => e
