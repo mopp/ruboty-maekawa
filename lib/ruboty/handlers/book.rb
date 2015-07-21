@@ -12,10 +12,10 @@ module Ruboty
             )
 
             def book(message)
-                return if !message.body.match(/^@*#{message.robot.name} book.*/)
+                return if !message.body.match(/^@*#{message.robot.name}:* book.*/)
 
                 begin
-                    query = message.body.sub(/^@*#{message.robot.name} book /, '').strip
+                    query = message.body.sub(/^@*#{message.robot.name}:* book /, '').strip
 
                     raise if query.empty?
 
