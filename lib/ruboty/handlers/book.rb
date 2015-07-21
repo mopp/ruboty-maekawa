@@ -13,6 +13,7 @@ module Ruboty
             )
 
             def book(message)
+                puts(message)
                 begin
                     query = message.body.sub("#{message.robot.name} book ", '').strip
 
@@ -60,9 +61,11 @@ module Ruboty
 
                 books = Ruboty::Maekawa::Searcher.request(connector_type, hash)
 
-                books.map! do |book|
-                    next if book.isbn.empty?
-                    book
+                books.delete_if do |book|
+                    book.isbn.empty?
+                end
+                books.uniq! do |book|
+                    book.isbn
                 end
 
                 if books.length == 0
@@ -73,6 +76,7 @@ module Ruboty
                 title_str = ''
                 isbns = []
                 books.each do |book|
+                    next if book.nil?
                     title_str += "- #{book.title}\n"
                     isbns << book.isbn
                 end
@@ -84,7 +88,7 @@ module Ruboty
                     libaizu = cbook.systems[0]
                     next if (libaizu.reserveurl.nil? || libaizu.reserveurl.empty?)
 
-                    results += "- #{books[i].title}\n  #{libaizu.libkeys.inspect}"
+                    results += "- #{books[i].title}\n  #{libaizu.libkeys.inspect}\n  #{libaizu.reserveurl}\n"
                 }
                 message.reply("#{results}\n#{BORDER_STR}\n大学にあるのはこのぐらいみたいだにゃ")
             end
