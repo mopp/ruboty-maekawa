@@ -40,7 +40,7 @@ module Ruboty
                     meshiFiles = result['files']
                     meshiFiles.keys.each do | file |
                         file    = meshiFiles[file]
-                        csvStr += file['content'].gsub(/,\s?/, ',')
+                        csvStr += (file['content'].gsub(/,\s?/, ',') + "\n")
                     end
                 end
 
