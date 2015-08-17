@@ -1,4 +1,5 @@
 require "ruboty"
 require "ruboty/handlers/book"
+require "ruboty/handlers/meshi"
 require "ruboty/maekawa/ndl"
 require "ruboty/maekawa/version"
