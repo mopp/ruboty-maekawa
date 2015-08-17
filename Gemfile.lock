@@ -8,7 +8,7 @@ GIT
 PATH
   remote: .
   specs:
-    ruboty-maekawa (0.2.0)
+    ruboty-maekawa (0.2.1)
       calil
       ruboty
 
